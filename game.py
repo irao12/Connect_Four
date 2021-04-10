@@ -2,10 +2,6 @@ from constants import *
 from stand import Stand
 
 
-def draw_tie():
-    pass
-
-
 class Game:
     def __init__(self):
         self.turn_col = 1  # 1 is black, 2 is red
@@ -128,6 +124,7 @@ class Game:
             row = self.check_next_open(col)
             if row != -1:
                 self.stand.checkers[row][int(col)] = self.turn_col
+                DROP.play()
                 self.turn_num += 1
                 if self.turn_num > 42:
                     return True

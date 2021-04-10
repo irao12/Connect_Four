@@ -1,11 +1,8 @@
 from constants import *
 from game import Game
+import sys
 
 pygame.font.init()
-
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Connect 4")
-pygame.display.set_icon(pygame.image.load("icon.png"))
 
 
 def draw_circle(row, col, color):
@@ -52,8 +49,6 @@ def draw_tie():
 
 def draw_window(stand, pos, checker_color, game):
     WIN.fill((255, 255, 255))
-    stand_rect = pygame.Rect(SIDE_SPACE, TOP_SPACE, STAND_WIDTH, STAND_HEIGHT)
-    pygame.draw.rect(WIN, BLUE, stand_rect)
 
     for row in range(ROWS):
         for col in range(COLS):
@@ -61,8 +56,8 @@ def draw_window(stand, pos, checker_color, game):
                 draw_circle(row, col, BLACK)
             elif stand.checkers[row][col] == 2:
                 draw_circle(row, col, RED)
-            else:
-                draw_circle(row, col, WHITE)
+
+    WIN.blit(BOARD, (SIDE_SPACE, TOP_SPACE))
 
     if not game.finished:
         draw_cursor(pos, checker_color)
@@ -91,7 +86,7 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-                exit()
+                sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 reset_border = pygame.Rect(0 + 5, 0 + 5, RESET.get_width(), RESET.get_height())
                 if reset_border.collidepoint(pos):
