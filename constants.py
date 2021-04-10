@@ -1,0 +1,29 @@
+import pygame
+
+pygame.font.init()
+
+WIDTH = 800
+HEIGHT = 600
+ROWS, COLS = 6, 7
+
+SIDE_SPACE = WIDTH / 8
+TOP_SPACE = HEIGHT / 6
+STAND_HEIGHT = HEIGHT - TOP_SPACE
+STAND_WIDTH = WIDTH - SIDE_SPACE * 2
+
+SECTION_HEIGHT = STAND_HEIGHT / 6
+SECTION_WIDTH = STAND_WIDTH / 7
+
+CHECKER_RADIUS = SECTION_HEIGHT/2-10
+
+FPS = 60
+WHITE = (255, 255, 255)
+BLUE = (38, 134, 212)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GRAY = (153, 159, 163)
+
+RESET = pygame.font.SysFont('arial', 25).render("RESET", 1, BLACK)
+VICTORY = pygame.font.SysFont('comicsans', 80)
+
+
